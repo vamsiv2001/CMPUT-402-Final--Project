@@ -1,0 +1,79 @@
+# the houses currently supported/connected to the service
+houses:
+  - name: mse
+    address: localhost
+    port: 5050
+    user: admin
+    password: 1234
+    targetTemp: 70
+    alarmDelay: 30
+    alarmPasscode: stop
+    smartLockPasscode: skippy
+    nightStartTime: 22
+    nightEndTime: 6
+    experimentGroup: 1
+
+  - name: cmu
+    address: localhost
+    port: 5051
+    user: admin
+    password: 5678
+    targetTemp: 70
+    alarmDelay: 30
+    alarmPasscode: quit
+    smartLockPasscode: skippy
+    nightStartTime: 22
+    nightEndTime: 6
+    experimentGroup: 2
+
+  - name: abc
+    address: localhost
+    port: 5052
+    user: admin
+    password: 4321
+    targetTemp: 70
+    alarmDelay: 30
+    alarmPasscode: stop
+    smartLockPasscode: skippy
+    nightStartTime: 22
+    nightEndTime: 6
+    experimentGroup: 3
+
+  - name: jlu
+    address: localhost
+    port: 5053
+    user: admin
+    password: 7777
+    targetTemp: 70
+    alarmDelay: 30
+    alarmPasscode: quit
+    smartLockPasscode: skippy
+    nightStartTime: 22
+    nightEndTime: 6
+    experimentGroup: 4
+
+# how many seconds between database snapshots
+historyTimer: 5
+
+# configuration information for the database. This setup uses MySQL with a database named 'TartanHome'
+# but any DBMS that supports JDBC can be used
+database:
+  # the name of the JDBC driver to use
+  driverClass: com.mysql.cj.jdbc.Driver
+
+  # the DB username
+  user: tartan
+
+  # the DB password
+  password: tartan1234
+
+  # the JDBC URL; the database is called TartanHome; #mysql-container
+  url: jdbc:mysql://localhost/TartanHome?useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+
+  # Allow Hibernate to create tables
+  properties:
+    hibernate.dialect: org.hibernate.dialect.MySQLDialect
+
+    # leave it to hibernate to update/create the database. Warning, this is generally
+    # considered a bad setting for production
+    hibernate.hbm2ddl.auto: update

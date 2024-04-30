@@ -1,0 +1,19 @@
+name: Revert 
+
+on: workflow_dispatch
+
+jobs:
+   deploy:
+     runs-on: self-hosted
+     steps:
+       - name: Revert to previous version 
+         uses: appleboy/ssh-action@master
+         with: 
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USERNAME }}
+           port: ${{ secrets.PORT }}
+           key: ${{ secrets.KEY }}
+           script: |
+             cd ~/prod/smart-home
+             git reset --hard HEAD^
+             docker-compose down && docker-compose up --build -d
